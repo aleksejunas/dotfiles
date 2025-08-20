@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Get the directory where this script is located
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DOTFILES_DIR="$SCRIPT_DIR"
+
 # Diagnose how Hyprland and Waybar connect.
 diagnose() {
   set +e
@@ -156,12 +160,13 @@ show_menu() {
   echo "Choose your preferred setup method:"
   echo "1) Diagnose current setup (read-only)"
   echo "2) Git-first approach (keep Waybar in Hypr repo)"
-  echo "3) Full dotfiles setup (move all configs to ~/dotfiles/)"
-  echo "4) Diagnose Hypr config only"
-  echo "5) Diagnose Hypr scripts only"
-  echo "6) Exit"
+  echo "3) Install/update dotfiles symlinks"
+  echo "4) Collect configs into dotfiles"
+  echo "5) Diagnose Hypr config only"
+  echo "6) Diagnose Hypr scripts only"
+  echo "7) Exit"
   echo ""
-  read -p "Enter your choice (1-6): " choice
+  read -p "Enter your choice (1-7): " choice
   echo ""
   
   case "$choice" in
@@ -176,18 +181,22 @@ show_menu() {
       setup_git_first
       ;;
     3)
-      echo "Setting up full dotfiles structure..."
-      setup_dotfiles
+      echo "Installing dotfiles symlinks..."
+      install_dotfiles
       ;;
     4)
+      echo "Collecting configs into dotfiles..."
+      collect_configs
+      ;;
+    5)
       echo "Diagnosing Hypr config..."
       diagnose_hypr
       ;;
-    5)
+    6)
       echo "Diagnosing Hypr scripts..."
       diagnose_hypr_scripts
       ;;
-    6)
+    7)
       echo "Exiting..."
       exit 0
       ;;
@@ -199,64 +208,40 @@ show_menu() {
   esac
 }
 
-# Git-first setup function
-setup_git_first() {
-  WAYBAR_DIR="$HOME/.config/waybar"
-  HYPR_DIR="$HOME/.config/hypr"
-  HYPR_WAYBAR_DIR="$HYPR_DIR/waybar"
-
-  # Ensure hypr directory exists and is a real directory (not symlink)
-  if [[ ! -d "$HYPR_DIR" ]]; then
-    echo "Error: $HYPR_DIR doesn't exist. Please ensure Hyprland is properly installed."
-    exit 1
-  fi
-
-  if [[ -L "$HYPR_DIR" ]]; then
-    echo "Error: $HYPR_DIR is a symlink. This script expects it to be your Git repo."
-    exit 1
-  fi
-
-  # Ensure hypr/waybar exists in your Git repo
-  mkdir -p "$HYPR_WAYBAR_DIR"
-
-  # If ~/.config/waybar exists as a real directory, move its contents to Git repo
-  if [[ -d "$WAYBAR_DIR" && ! -L "$WAYBAR_DIR" ]]; then
-    echo "Moving existing ~/.config/waybar contents to Git repo..."
-    # Check if waybar directory has any files
-    if [[ -n "$(ls -A "$WAYBAR_DIR" 2>/dev/null)" ]]; then
-      for item in "$WAYBAR_DIR"/*; do
-        [[ -e "$item" ]] || continue
-        item_name="$(basename "$item")"
-        target="$HYPR_WAYBAR_DIR/$item_name"
-        if [[ ! -e "$target" ]]; then
-          mv "$item" "$target"
-          echo "  Moved: $item_name"
-        else
-          echo "  Skipping $item_name - already exists in Git repo"
-        fi
-      done
+# Install dotfiles function (symlink existing dotfiles to ~/.config)
+install_dotfiles() {
+  CONFIG_DIR="$HOME/.config"
+  
+  echo "Installing dotfiles from $DOTFILES_DIR"
+  
+  for dir in "$DOTFILES_DIR"/*/; do
+    [[ -d "$dir" ]] || continue
+    config_name="$(basename "$dir")"
+    
+    # Skip non-config directories
+    case "$config_name" in
+      .git|scripts|*.md|README*) continue ;;
+    esac
+    
+    dest="$CONFIG_DIR/$config_name"
+    
+    if [[ -L "$dest" ]]; then
+      echo "  $config_name (already symlinked)"
+    elif [[ -e "$dest" ]]; then
+      echo "  $config_name (backing up existing to ${dest}.bak)"
+      mv "$dest" "${dest}.bak"
+      ln -sfn "$dir" "$dest"
+    else
+      ln -sfn "$dir" "$dest"
+      echo "  $config_name (symlinked)"
     fi
-    rmdir "$WAYBAR_DIR" 2>/dev/null || rm -rf "$WAYBAR_DIR"
-  fi
-
-  # Create symlink: ~/.config/waybar -> ~/.config/hypr/waybar
-  if ! ln -sfn "$HYPR_WAYBAR_DIR" "$WAYBAR_DIR"; then
-    echo "Error: Failed to create symlink $WAYBAR_DIR -> $HYPR_WAYBAR_DIR"
-    exit 1
-  fi
-
-  echo "Git-first setup complete:"
-  echo "  Source of truth: $HYPR_WAYBAR_DIR (in your Git repo)"
-  echo "  Symlink created: $WAYBAR_DIR -> $HYPR_WAYBAR_DIR"
-  echo "  Waybar will find configs at the symlinked path"
-  echo "  All changes are now version controlled in your hypr repo"
-  echo ""
-  echo "Restart Waybar to apply: killall waybar"
+  done
+  
+  echo "Dotfiles installation complete!"
 }
 
-# Dotfiles setup function
-setup_dotfiles() {
-  DOTFILES_DIR="$HOME/dotfiles"
+# Collect configs function (move configs from ~/.config to dotfiles)
+collect_configs() {
   CONFIG_DIR="$HOME/.config"
   
   # Common configs that belong in dotfiles
@@ -281,8 +266,7 @@ setup_dotfiles() {
     "gtk-4.0"
   )
   
-  echo "Moving configs to ~/dotfiles/ structure..."
-  mkdir -p "$DOTFILES_DIR"
+  echo "Collecting configs into dotfiles structure at $DOTFILES_DIR..."
   
   # Move existing configs to dotfiles
   for config_name in "${DOTFILE_CONFIGS[@]}"; do
@@ -318,65 +302,12 @@ setup_dotfiles() {
     fi
   done
   
-  # Copy this script to the dotfiles directory
-  if [[ ! -f "$DOTFILES_DIR/setup_dotfiles.sh" ]]; then
-    cp "${BASH_SOURCE[0]}" "$DOTFILES_DIR/setup_dotfiles.sh"
-    chmod +x "$DOTFILES_DIR/setup_dotfiles.sh"
-    echo "  Copied setup script to $DOTFILES_DIR/setup_dotfiles.sh"
-  fi
-  
-  # Create a basic install script
-  cat > "$DOTFILES_DIR/install.sh" <<'EOF'
-#!/usr/bin/env bash
-# Dotfiles installer - symlinks configs to ~/.config/
-
-set -euo pipefail
-
-DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-CONFIG_DIR="$HOME/.config"
-
-echo "Installing dotfiles from $DOTFILES_DIR"
-
-for dir in "$DOTFILES_DIR"/*/; do
-  [[ -d "$dir" ]] || continue
-  config_name="$(basename "$dir")"
-  
-  # Skip non-config directories
-  case "$config_name" in
-    .git|scripts|*.md|README*) continue ;;
-  esac
-  
-  dest="$CONFIG_DIR/$config_name"
-  
-  if [[ -L "$dest" ]]; then
-    echo "  $config_name (already symlinked)"
-  elif [[ -e "$dest" ]]; then
-    echo "  $config_name (backing up existing to ${dest}.bak)"
-    mv "$dest" "${dest}.bak"
-    ln -sfn "$dir" "$dest"
-  else
-    ln -sfn "$dir" "$dest"
-    echo "  $config_name (symlinked)"
-  fi
-done
-
-echo "Dotfiles installation complete!"
-EOF
-  chmod +x "$DOTFILES_DIR/install.sh"
-  
-  echo "Dotfiles setup complete:"
+  echo "Config collection complete!"
   echo "  Source: $DOTFILES_DIR/"
-  echo "  Configs moved: ${DOTFILE_CONFIGS[*]}"
-  echo "  Setup script: $DOTFILES_DIR/setup_dotfiles.sh"
-  echo "  Install script: $DOTFILES_DIR/install.sh"
-  echo ""
-  echo "Next steps:"
-  echo "  cd ~/dotfiles && git init"
-  echo "  git add . && git commit -m 'Initial dotfiles'"
-  echo "  Use ~/dotfiles/setup_dotfiles.sh for future management"
+  echo "  Configs collected: ${DOTFILE_CONFIGS[*]}"
 }
 
-# Handle command line arguments (preserve existing functionality)
+# Handle command line arguments
 if [[ "${1-}" == "--diagnose" || "${1-}" == "-d" ]]; then
   diagnose
   echo
@@ -388,8 +319,11 @@ elif [[ "${1-}" == "--diagnose-hypr" || "${1-}" == "-H" ]]; then
 elif [[ "${1-}" == "--diagnose-scripts" || "${1-}" == "-s" ]]; then
   diagnose_hypr_scripts
   exit 0
-elif [[ "${1-}" == "--dotfiles" ]]; then
-  setup_dotfiles
+elif [[ "${1-}" == "--install" || "${1-}" == "-i" ]]; then
+  install_dotfiles
+  exit 0
+elif [[ "${1-}" == "--collect" || "${1-}" == "-c" ]]; then
+  collect_configs
   exit 0
 elif [[ "${1-}" == "--git-first" ]]; then
   setup_git_first
@@ -401,7 +335,8 @@ elif [[ "${1-}" == "--help" || "${1-}" == "-h" ]]; then
   echo "  --diagnose, -d        Diagnose current setup"
   echo "  --diagnose-hypr, -H   Diagnose Hypr config only"
   echo "  --diagnose-scripts, -s Diagnose Hypr scripts only"
-  echo "  --dotfiles            Setup full dotfiles structure"
+  echo "  --install, -i         Install dotfiles symlinks"
+  echo "  --collect, -c         Collect configs into dotfiles"
   echo "  --git-first           Setup Git-first approach"
   echo "  --help, -h            Show this help"
   echo ""

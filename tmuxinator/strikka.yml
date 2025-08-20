@@ -1,0 +1,8 @@
+# ~/.config/tmuxinator/default.yml
+enable_pane_titles: true
+
+name: strikka
+root: "~/Kode/ReactNative/bao302/strikka-app/"
+windows:
+  - editor: nvim
+  - shell: zsh

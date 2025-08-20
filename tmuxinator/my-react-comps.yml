@@ -1,0 +1,18 @@
+enable_pane_titles: true
+
+name: phase-out-village
+root: ~/Kode/MyReactComponents/my-react-components
+windows:
+  - ["DEV-SERVER"]:
+      root: ~/Kode/MyReactComponents/my-react-components
+      panes:
+        - zsh
+  - ["CODE"]:
+      root: ~/Kode/MyReactComponents/my-react-components
+      panes:
+        - nvim
+
+  - ["GIT"]:
+      root: ~/Kode/MyReactComponents/my-react-components
+      panes:
+        - zsh

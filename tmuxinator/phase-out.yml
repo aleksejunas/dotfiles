@@ -1,0 +1,18 @@
+enable_pane_titles: true
+
+name: phase-out-village
+root: ~/Kode/Projects/PhaseOutVillage/phase-out-village/
+windows:
+  - ["DEV-SERVER"]:
+      root: ~/Kode/Projects/PhaseOutVillage/phase-out-village/
+      panes:
+        - zsh
+  - ["CODE"]:
+      root: ~/Kode/Projects/PhaseOutVillage/phase-out-village/
+      panes:
+        - nvim
+
+  - ["GIT"]:
+      root: ~/Kode/Projects/PhaseOutVillage/phase-out-village/
+      panes:
+        - zsh

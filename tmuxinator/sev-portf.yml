@@ -1,0 +1,29 @@
+enable_pane_titles: true
+
+name: seventyseven-portfolio
+root: ~/Kode/Projects/SeventySevenPortfolio/seventyseven-portfolio
+
+windows:
+  - [FRONTEND CODE]:
+      panes:
+        - nvim
+
+  - [FRONTEND DEV SERVER]:
+      root: ~/Kode/Projects/SeventySevenPortfolio/seventyseven-portfolio/
+      panes:
+        - pnpm run dev
+
+  - [BACKEND CODE]:
+      root: ~/Kode/Projects/SeventySevenPortfolio/seventyseven-portfolio/
+      panes:
+        - nvim
+
+  - [BACKEND DEV SERVER]:
+      root: ~/Kode/Projects/SeventySevenPortfolio/seventyseven-portfolio/
+      panes:
+        - pnpm sanity
+
+  - [TERMINAL]:
+      root: ~/Kode/Projects/SeventySevenPortfolio/seventyseven-portfolio
+      panes:
+        - zsh

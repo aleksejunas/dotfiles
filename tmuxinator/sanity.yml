@@ -1,0 +1,37 @@
+# ~/.config/tmuxinator/sanity.yml
+
+enable_pane_titles: true
+
+name: sanity
+root: ~/Kode/Projects/Sanity/SanityTest/sanity-test/
+
+windows:
+  - [FRONTEND CODE]:
+      # layout: main-horizontal # Define the layout of this window
+      panes:
+        - nvim # Open Neovim in the first pane
+
+  - [FRONTEND DEV SERVER]:
+      root: ~/Kode/Projects/Sanity/SanityTest/sanity-test/frontend/
+      panes:
+        - pnpm run dev # Start the developer server in one pane
+
+  - [FRONTEND TERMINAL]:
+      root: ~/Kode/Projects/Sanity/SanityTest/sanity-test/frontend
+      panes:
+        - zsh # Open a Terminal
+
+  - [BACKEND CODE]:
+      root: ~/Kode/Projects/Sanity/SanityTest/sanity-test/backend
+      panes:
+        - nvim
+
+  - [BACKEND DEV SERVER]:
+      root: ~/Kode/Projects/Sanity/SanityTest/sanity-test/backend
+      panes:
+        - pnpm run dev
+
+  - [BACKEND TERMINAL]:
+      root: ~/Kode/Projects/Sanity/SanityTest/sanity-test/backend
+      panes:
+        - zsh

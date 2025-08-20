@@ -1,0 +1,28 @@
+name: chill-pi
+root: ~/Kode/Projects/ChillPi/chill-pi/
+windows:
+  - editor:
+      layout: main-vertical
+      panes:
+        - nvim .
+        - clear && make run
+  - database:
+      layout: even-horizontal
+      panes:
+        - sqlite3 database/db.sqlite
+        - tail -f logs/db.log
+  - server:
+      layout: main-horizontal
+      panes:
+        - clear && go run main.go
+        - tail -f logs/server.log
+  - tests:
+      layout: even-vertical
+      panes:
+        - clear && go test ./test/...
+        - tail -f logs/test.log
+  - logs:
+      layout: even-horizontal
+      panes:
+        - tail -f logs/server.log
+        - tail -f logs/db.log

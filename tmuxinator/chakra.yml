@@ -1,0 +1,18 @@
+enable_pane_titles: true
+
+name: chakra-ui-playground
+root: ~/Kode/React/ChakraUiPlayground/chakra-ui-playground/
+windows:
+  - ["DEV-SERVER"]:
+      root: ~/Kode/React/ChakraUiPlayground/chakra-ui-playground/
+      panes:
+        - zsh
+  - ["CODE"]:
+      root: ~/Kode/React/ChakraUiPlayground/chakra-ui-playground/
+      panes:
+        - nvim
+
+  - ["GIT"]:
+      root: ~/Kode/React/ChakraUiPlayground/chakra-ui-playground/
+      panes:
+        - zsh

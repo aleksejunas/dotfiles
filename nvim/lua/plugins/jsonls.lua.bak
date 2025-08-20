@@ -1,0 +1,20 @@
+-- ~/.config/nvim/lua/plugins/lsp/jsonls.lua
+return {
+  -- Disable Mason install for jsonls
+  "neovim/nvim-lspconfig",
+  opts = {
+    servers = {
+      jsonls = {
+        -- Bruk systeminstallert språkserver
+        cmd = { "/home/rolf/.pnpm-global/bin/vscode-json-language-server", "--stdio" },
+        filetypes = { "json", "jsonc" },
+        settings = {
+          json = {
+            validate = { enable = true },
+            schemas = require("schemastore").json.schemas(),
+          },
+        },
+      },
+    },
+  },
+}

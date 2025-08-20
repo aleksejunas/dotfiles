@@ -1,0 +1,19 @@
+enable_pane_titles: true
+
+name: termi_nerd
+root: ~/Kode/Projects/TermiNerd/termi_nerd/
+
+windows:
+  - ["DEV-SERVER"]:
+      root: ~/Kode/Projects/TermiNerd/termi_nerd/
+      panes:
+        - zsh
+  - ["CODE"]:
+      root: ~/Kode/Projects/TermiNerd/termi_nerd/
+      panes:
+        - nvim
+
+  - ["GIT"]:
+      root: ~/Kode/Projects/TermiNerd/termi_nerd/
+      panes:
+        - zsh

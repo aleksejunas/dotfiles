@@ -1,0 +1,20 @@
+enable_pane_titles: true
+
+name: thats-the-sound-of-the-alarm-st
+
+root: ~/Kode/Projects/ThatsTheSoundOfTheAlarm/ThatsTheSoundOfTheAlarmST/thats-the-sound-of-the-alarm-st/
+
+windows:
+  - ["DEV-SERVER"]:
+      root: ~/Kode/Projects/ThatsTheSoundOfTheAlarm/ThatsTheSoundOfTheAlarmST/thats-the-sound-of-the-alarm-st/
+      panes:
+        - zsh
+  - ["CODE"]:
+      root: ~/Kode/Projects/ThatsTheSoundOfTheAlarm/ThatsTheSoundOfTheAlarmST/thats-the-sound-of-the-alarm-st/
+      panes:
+        - nvim
+
+  - ["GIT"]:
+      root: ~/Kode/Projects/ThatsTheSoundOfTheAlarm/ThatsTheSoundOfTheAlarmST/thats-the-sound-of-the-alarm-st/
+      panes:
+        - zsh

@@ -1,0 +1,6 @@
+# ~/.config/tmuxinator/default.yml
+name: default
+root: "~"
+windows:
+  - editor: nvim
+  - shell: zsh

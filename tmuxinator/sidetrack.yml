@@ -1,0 +1,18 @@
+enable_pane_titles: true
+
+name: sidetrack-slayer
+root: ~/Kode/Projects/SideTrackSlayer/sidetrack-slayer-focus-forge/
+
+windows:
+  - ["CODE"]:
+      root: ~/Kode/Projects/SideTrackSlayer/sidetrack-slayer-focus-forge/
+        - nvim
+
+  - ["DEV-SERVER"]:
+      root: ~/Kode/Projects/SideTrackSlayer/sidetrack-slayer-focus-forge/
+      panes:
+        - npm run dev
+
+  - ["TERMINAL"]:
+      root: ~/Kode/Projects/TodoOrNotToDo/to-do-or-not-to-do/
+        - npx json-server --watch db.json --port 3002

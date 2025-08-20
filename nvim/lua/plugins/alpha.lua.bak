@@ -1,0 +1,54 @@
+return {
+  "goolord/alpha-nvim",
+  config = function()
+    local theta = require("alpha.themes.theta")
+
+    -- Custom header
+    theta.header.val = {
+      "                                                                                                          ",
+      "██    ██ ███████        ██████  ██████  ██████  ███████                     ███    ██  ██████  ████████ ██",
+      "██    ██ ██            ██      ██    ██ ██   ██ ██                          ████   ██ ██    ██    ██    ██",
+      "██    ██ ███████ █████ ██      ██    ██ ██   ██ █████       █████ █████     ██ ██  ██ ██    ██    ██    ██",
+      " ██  ██       ██       ██      ██    ██ ██   ██ ██                          ██  ██ ██ ██    ██    ██      ",
+      "  ████   ███████        ██████  ██████  ██████  ███████                     ██   ████  ██████     ██    ██",
+      "                                                                                                          ",
+      "                                                                                                          ",
+      "                                                                                                          ",
+    }
+
+    -- Modify buttons with proper icons
+    theta.buttons.val = {
+      { type = "text", val = "Quick links", opts = { hl = "SpecialComment", position = "center" } },
+      { type = "padding", val = 1 },
+      require("alpha.themes.dashboard").button("e", "󰈮  New file", "<cmd>ene<CR>"),
+      require("alpha.themes.dashboard").button("SPC f f", "󰈞  Find file"),
+      require("alpha.themes.dashboard").button("SPC f g", "󰊄  Live grep"),
+      require("alpha.themes.dashboard").button(
+        "c",
+        "  Configuration",
+        "<cmd>cd " .. vim.fn.stdpath("config") .. "<CR>"
+      ),
+      require("alpha.themes.dashboard").button("x", "󰒲  Lazy Extras", "<cmd>LazyExtras<CR>"),
+      require("alpha.themes.dashboard").button("u", "󰚰  Update plugins", "<cmd>Lazy sync<CR>"),
+      require("alpha.themes.dashboard").button("q", "󰅚  Quit", "<cmd>qa<CR>"),
+    }
+    local function plugin_info()
+      local lazy_ok, lazy = pcall(require, "lazy")
+      if not lazy_ok then
+        return ""
+      end
+
+      local count = 0
+      for _ in pairs(lazy.plugins()) do
+        count = count + 1
+      end
+
+      return "⚡ " .. count .. " plugins loaded"
+    end
+    -- Set plugin count as footer
+    theta.footer.val = plugin_info()
+    theta.footer = { type = "text", val = plugin_info(), opts = { position = "center", hl = "Comment" } }
+    -- Setup alpha with the complete theta config
+    require("alpha").setup(theta.config)
+  end,
+}

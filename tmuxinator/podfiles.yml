@@ -1,0 +1,40 @@
+# ~/.config/tmuxinator/podfiles.yml
+
+enable_pane_titles: true
+
+name: podfiles # Name of your project
+root: ~/Kode/Projects/ThePodmanFiles/ # Path to the root directory of your project
+
+windows:
+  - [FRONTEND CODE]:
+      root: ~/Kode/Projects/ThePodmanFiles/website/
+      layout: main-horizontal # Define the layout of this window
+      panes:
+        - nvim # Open Neovim in the first pane
+        # - zsh # Open a zsh shell in the second pane
+
+  - [FRONTEND DEV SERVER]:
+      root: ~/Kode/Projects/ThePodmanFiles/website/
+      panes:
+        - pnpm run dev # Start the development server in one pane
+
+  - [FRONTEND TERMINAL]:
+      root: ~/Kode/Projects/ThePodmanFiles/website/
+      panes:
+        - zsh # Start a terminal
+
+  - [BACKEND CODE]:
+      root: ~/Kode/Projects/ThePodmanFiles/server/
+      layout: main-horizontal
+      panes:
+        - nvim
+
+  - [BACKEND DEV SERVER]:
+      root: ~/Kode/Projects/ThePodmanFiles/server/
+      panes:
+        - pnpm run dev # Start the backend server in one pane
+
+  - [BACKEND TERMINAL]:
+      root: ~/Kode/Projects/ThePodmanFiles/server/
+      panes:
+        - zsh # Start a terminal

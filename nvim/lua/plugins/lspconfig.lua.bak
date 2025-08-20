@@ -1,0 +1,75 @@
+-- ~/.config/nvim/lua/plugins/lspconfig.lua
+-- LazyVim plugin-spec format for lspconfig with cmp and cmp_nvim_lsp support
+
+return {
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      {
+        "hrsh7th/nvim-cmp",
+        config = function()
+          local cmp = require("cmp")
+          local mapping = require("cmp.config.mapping")
+
+          cmp.setup({
+            snippet = {
+              expand = function(args)
+                vim.fn["UltiSnips#Anon"](args.body)
+              end,
+            },
+            mapping = mapping({
+              ["<C-Space>"] = mapping.complete(),
+            }),
+            sources = {
+              { name = "nvim_lsp" },
+              { name = "buffer" },
+              { name = "path" },
+            },
+          })
+        end,
+      },
+      {
+        "hrsh7th/cmp-nvim-lsp",
+      },
+    },
+    config = function()
+      local lspconfig = require("lspconfig")
+
+      local ok_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      if ok_cmp then
+        capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
+      else
+        vim.notify("cmp_nvim_lsp not found, LSP autocompletion disabled", vim.log.levels.WARN)
+      end
+
+      local servers = {
+        "tsserver",
+        "html",
+        "cssls",
+        "jsonls",
+        "tailwindcss",
+        "bashls",
+        "lua_ls",
+      }
+
+      for _, server in ipairs(servers) do
+        local opts = {
+          capabilities = capabilities,
+        }
+
+        if server == "lua_ls" then
+          opts.settings = {
+            Lua = {
+              diagnostics = {
+                globals = { "vim" },
+              },
+            },
+          }
+        end
+
+        lspconfig[server].setup(opts)
+      end
+    end,
+  },
+}

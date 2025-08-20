@@ -1,0 +1,13 @@
+enable_pane_titles: true
+
+name: cv-md
+root: ~/CloudServices/JottaSync/Jobbsøk/CV/markdown/
+
+windows:
+  - CURRENT-CV:
+    root: ~/CloudServices/JottaSync/Jobbsøk/CV/markdown/
+    panes:
+      - nvim
+  - REFERENCE:
+    root: ~/CloudServices/JottaSync/Jobbsøk/CV/markdown/
+      - nvim

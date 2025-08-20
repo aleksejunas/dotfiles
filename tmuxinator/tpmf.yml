@@ -1,0 +1,39 @@
+# ~/.config/tmuxinator/tpmf.yml
+
+enable_pane_titles: true
+
+name: podfiles # Name of your project
+root: ~/Kode/Projects/ThePodmanFilesRepos/tpmf-frontend/ # Path to the root directory of your project
+
+windows:
+  - [FRONTEND CODE]:
+      layout: main-horizontal # Define the layout of this window
+      panes:
+        - nvim # Open Neovim in the first pane
+        # - zsh # Open a zsh shell in the second pane
+
+  - [FRONTEND DEV SERVER]:
+      root: ~/Kode/Projects/ThePodmanFilesRepos/tpmf-frontend/frontend/
+      panes:
+        - pnpm run dev # Start the development server in one pane
+
+  - [FRONTEND TERMINAL]:
+      root: ~/Kode/Projects/ThePodmanFilesRepos/tpmf-frontend/frontend/
+      panes:
+        - zsh # Start a terminal
+
+  - [BACKEND CODE]:
+      root: ~/Kode/Projects/ThePodmanFilesRepos/tpmf-backend/backend/
+      layout: main-horizontal
+      panes:
+        - nvim
+
+  - [BACKEND DEV SERVER]:
+      root: ~/Kode/Projects/ThePodmanFilesRepos/tpmf-backend/backend/
+      panes:
+        - pnpm run dev # Start the backend server in one pane
+
+  - [BACKEND TERMINAL]:
+      root: ~/Kode/Projects/ThePodmanFilesRepos/tpmf-backend/backend/
+      panes:
+        - zsh # Start a terminal

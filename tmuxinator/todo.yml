@@ -1,0 +1,25 @@
+enable_pane_titles: true
+
+name: to-do-or-not-to-do
+root: ~/Kode/Projects/TodoOrNotToDo/to-do-or-not-to-do/
+
+windows:
+  - [CODE]:
+      root: ~/Kode/Projects/TodoOrNotToDo/to-do-or-not-to-do/
+      panes:
+        - nvim
+
+  - [NEXT SERVER]:
+      root: ~/Kode/Projects/TodoOrNotToDo/to-do-or-not-to-do/
+      panes:
+        - npm run dev
+
+  - [JSON SERVER]:
+      root: ~/Kode/Projects/TodoOrNotToDo/to-do-or-not-to-do/
+      panes:
+        - npx json-server --watch db.json --port 3002
+
+  - [TERMINAL]:
+      root: ~/Kode/Projects/TodoOrNotToDo/to-do-or-not-to-do/
+      panes:
+        - zsh

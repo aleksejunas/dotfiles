@@ -1,0 +1,6 @@
+lø. 09. aug. 00:25:33 +0200 2025: Starting swaylock debug test
+lø. 09. aug. 00:25:33 +0200 2025: Testing simple swaylock command
+lø. 09. aug. 00:25:33 +0200 2025: Command: swaylock --color 000000 --show-failed-attempts --ignore-empty-password
+lø. 09. aug. 00:25:33 +0200 2025: Swaylock started with PID: 78002
+lø. 09. aug. 00:25:35 +0200 2025: ERROR - Swaylock process died
+lø. 09. aug. 00:25:35 +0200 2025: Debug test completed

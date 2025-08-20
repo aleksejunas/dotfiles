@@ -1,0 +1,28 @@
+fr. 08. aug. 19:22:14 +0200 2025: Test suspend triggered by hypridle
+fr. 08. aug. 19:22:14 +0200 2025: Hyprland session detected, signature: c4a4c341568944bd4fb9cd503558b2de602c0213_1754672840_982522935
+fr. 08. aug. 19:22:14 +0200 2025: Session state: 
+fr. 08. aug. 19:22:14 +0200 2025: Pausing music and muting audio
+fr. 08. aug. 19:22:14 +0200 2025: Locking screen
+fr. 08. aug. 19:22:16 +0200 2025: Attempting system suspend
+fr. 08. aug. 19:22:16 +0200 2025: Resume from suspend completed
+lø. 09. aug. 00:15:00 +0200 2025: Test suspend triggered by hypridle
+lø. 09. aug. 00:15:00 +0200 2025: Hyprland session detected, signature: c4a4c341568944bd4fb9cd503558b2de602c0213_1754674892_991985757
+lø. 09. aug. 00:15:00 +0200 2025: Session state: 
+lø. 09. aug. 00:15:00 +0200 2025: Pausing music and muting audio
+lø. 09. aug. 00:15:01 +0200 2025: Locking screen
+lø. 09. aug. 00:15:03 +0200 2025: Attempting system suspend
+lø. 09. aug. 00:15:03 +0200 2025: Resume from suspend completed
+lø. 09. aug. 00:36:57 +0200 2025: Simple suspend triggered by hypridle
+lø. 09. aug. 00:36:57 +0200 2025: Hyprland session detected, signature: c4a4c341568944bd4fb9cd503558b2de602c0213_1754674892_991985757
+lø. 09. aug. 00:36:57 +0200 2025: Session state: 
+lø. 09. aug. 00:36:57 +0200 2025: Pausing music and muting audio
+lø. 09. aug. 00:36:58 +0200 2025: Locking screen with simple swaylock
+lø. 09. aug. 00:37:02 +0200 2025: Attempting system suspend
+lø. 09. aug. 00:37:02 +0200 2025: Resume from suspend completed
+lø. 09. aug. 23:58:48 +0200 2025: Simple suspend triggered by hypridle
+lø. 09. aug. 23:58:48 +0200 2025: Hyprland session detected, signature: c4a4c341568944bd4fb9cd503558b2de602c0213_1754674892_991985757
+lø. 09. aug. 23:58:48 +0200 2025: Session state: 
+lø. 09. aug. 23:58:48 +0200 2025: Pausing music and muting audio
+lø. 09. aug. 23:58:49 +0200 2025: Locking screen with simple swaylock
+lø. 09. aug. 23:58:53 +0200 2025: Attempting system suspend
+lø. 09. aug. 23:58:53 +0200 2025: Resume from suspend completed

@@ -1,0 +1,109 @@
+// Copyright (C) 2020-2024 Aditya Shakya <adi1090x@gmail.com>
+//
+// Waybar config file
+[
+  {
+    "include": "~/.config/hypr/waybar/modules",
+    "name": "main-bar", // Waybar name
+    "id": "main-bar", // Waybar id
+    "layer": "top", // Waybar at top layer
+    //"mode": "dock", 				// Display mode (dock|hide|invisible|overlay)
+    "exclusive": true, // Request an exclusive zone from the compositor
+    "passthrough": false, // Pass any pointer events to the window under the bar
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 34, // Waybar height (to be removed for auto height)
+    "width": "", // Waybar width (empty for auto width)
+    "spacing": 0, // Gaps between modules
+    "margin": 0, // Space around the bar
+    "margin-top": 10, // Space above the bar
+    "margin-bottom": 0, // Space below the bar
+    "margin-left": 40, // Space to the left of the bar
+    "margin-right": 40, // Space to the right of the bar
+    "fixed-center": true, // Center modules position
+    "ipc": true, // Control waybar with `swaymsg bar` commands
+    // Choose the order of the modules
+    "modules-left": [
+      "custom/menu",
+      "hyprland/workspaces",
+      // "mpd#2",
+      // "mpd#3",
+      // "mpd#4",
+      "mpd",
+    ],
+    //"modules-left": ["custom/menu", "hyprland/workspaces", "idle_inhibitor", "tray", "custom/spotify" ],
+    // "modules-center": ["cpu", "memory", "disk"],
+    "modules-center": ["hyprland/window", "cpu#2", "memory#2", "disk#2"],
+    "modules-right": [
+      // "pulseaudio#2",
+      // "backlight#2",
+      "battery",
+      "battery#2",
+      "pulseaudio",
+      "bluetooth",
+      // "bluetooth#2",
+      "backlight",
+      "network",
+      "custom/clipboard",
+      // "network#2",
+      // "clock",
+      "clock#2",
+      "tray",
+      "custom/power",
+    ],
+    "modules-bottom": ["custom/spotify"],
+  },
+  // -- Bottom Bar --
+  {
+    "include": "~/.config/hypr/waybar/modules",
+    "name": "bottom-bar", // Waybar name
+    "id": "bottom-bar", // Waybar id
+    "layer": "bottom", // Waybar at bottom layer
+    //"mode": "dock", 				// Display mode (dock|hide|invisible|overlay)
+    "exclusive": true, // Request an exclusive zone from the compositor
+    "passthrough": false, // Pass any pointer events to the window under the bar
+    "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": "", // Waybar height (to be removed for auto height)
+    "width": "", // Waybar width (empty for auto width)
+    "spacing": 0, // Gaps between modules
+    "margin": 0, // Space around the bar
+    "margin-top": 10, // Space above the bar
+    "margin-bottom": 10, // Space below the bar
+    "margin-left": 40, // Space to the left of the bar
+    "margin-right": 40, // Space to the right of the bar
+    "fixed-center": true, // Center modules position
+    // "ipc": true, // Control waybar with `swaymsg bar` commands
+    // Choose the order of the modules
+    "modules-left": ["power-profiles-daemon"],
+    "power-profiles-daemon": {
+      "format": "{icon}   {profile}",
+      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+      "tooltip": true,
+      "format-icons": {
+        "default": " ",
+        "performance": " ",
+        "balanced": " ",
+        "power-saver": " ",
+      },
+    },
+    "mpris": {
+      "format": "{player_icon} {dynamic}",
+      "format-paused": "{status_icon} <i>{dynamic}</i>",
+      "dynamic-len": 120,
+      "player-icons": {
+        "default": "▶",
+        "mpv": "🎵",
+      },
+      "status-icons": {
+        "paused": "⏸",
+      },
+      // "ignored-players": ["firefox"]
+    },
+    "status-icons": {
+      "paused": " ⏸",
+    },
+    // TODO: Style mpris module like the spotify module
+    "modules-center": ["mpris"],
+    // "modules-center": ["custom/spotify"],
+    "modules-right": ["bluetooth"],
+  },
+]

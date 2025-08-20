@@ -1,0 +1,32 @@
+#!/bin/bash
+
+LOG_FILE="$HOME/.config/hypr/swaylock_debug.log"
+
+echo "$(date): Starting swaylock debug test" >> "$LOG_FILE"
+
+# Check if swaylock is already running
+if pgrep -f "swaylock" > /dev/null; then
+    echo "$(date): WARNING - swaylock is already running, killing existing processes" >> "$LOG_FILE"
+    pkill swaylock
+    sleep 2
+fi
+
+# Test simple swaylock command
+echo "$(date): Testing simple swaylock command" >> "$LOG_FILE"
+echo "$(date): Command: swaylock --color 000000 --show-failed-attempts --ignore-empty-password" >> "$LOG_FILE"
+
+# Run swaylock with debugging
+swaylock --debug --color 000000 --show-failed-attempts --ignore-empty-password &
+SWAYLOCK_PID=$!
+
+echo "$(date): Swaylock started with PID: $SWAYLOCK_PID" >> "$LOG_FILE"
+
+# Wait a moment and check if it's running
+sleep 2
+if kill -0 "$SWAYLOCK_PID" 2>/dev/null; then
+    echo "$(date): Swaylock is running successfully" >> "$LOG_FILE"
+else
+    echo "$(date): ERROR - Swaylock process died" >> "$LOG_FILE"
+fi
+
+echo "$(date): Debug test completed" >> "$LOG_FILE"

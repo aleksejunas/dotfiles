@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# launch kitty with alt config
+
+CONFIG="$HOME/.config/hypr/kitty/kitty.conf"
+
+if [ "$1" == "-f" ]; then
+  kitty --class 'kitty-float' --config "$CONFIG"
+elif [ "$1" == "-F" ]; then
+  kitty --class 'kitty-fullscreen' --config "$CONFIG" \
+    --start-as=fullscreen
+else
+  kitty --config "$CONFIG"
+fi

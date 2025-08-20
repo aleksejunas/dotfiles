@@ -1,0 +1,103 @@
+#!/usr/bin/env bash
+
+# Hyprland Configuration Validation Script
+# This script checks for common configuration issues
+
+echo "🔍 Hyprland Configuration Validation"
+echo "===================================="
+
+# Check if hyprctl is available
+if ! command -v hyprctl &> /dev/null; then
+    echo "❌ hyprctl not found - make sure Hyprland is installed and running"
+    exit 1
+fi
+
+echo "✅ Hyprland is running"
+
+# Check configuration syntax
+echo -n "🔧 Checking configuration syntax... "
+if hyprctl reload &> /dev/null; then
+    echo "✅ OK"
+else
+    echo "❌ Configuration has syntax errors"
+    echo "Run 'hyprctl reload' for detailed error messages"
+    exit 1
+fi
+
+# Check for conflicting keybindings
+echo "🔍 Checking for duplicate/conflicting keybindings..."
+TEMP_FILE="/tmp/hypr_binds_check.tmp"
+
+# Extract all bind lines
+grep -E "^bind[me]?\s*=" ~/.config/hypr/hyprland.conf ~/.config/hypr/keybinds-rofi.conf 2>/dev/null | \
+    sed 's/.*=\s*//' | \
+    cut -d',' -f1 | \
+    sort > "$TEMP_FILE"
+
+# Check for duplicates
+DUPLICATES=$(uniq -d "$TEMP_FILE")
+if [ -n "$DUPLICATES" ]; then
+    echo "⚠️  Potential duplicate keybindings found:"
+    echo "$DUPLICATES"
+else
+    echo "✅ No duplicate keybindings found"
+fi
+
+# Check script permissions
+echo "🔍 Checking script permissions..."
+SCRIPT_DIR="$HOME/.config/hypr/scripts"
+for script in "$SCRIPT_DIR"/*; do
+    if [ -f "$script" ] && [ ! -x "$script" ]; then
+        echo "⚠️  Script not executable: $script"
+        chmod +x "$script"
+        echo "✅ Fixed permissions for: $script"
+    fi
+done
+
+# Check required binaries
+echo "🔍 Checking required binaries..."
+REQUIRED_BINS=(
+    "waybar" "mako" "rofi" "hyprpaper" "hypridle"
+    "brightnessctl" "hyprlock" "swaylock" "cliphist"
+)
+
+MISSING_BINS=()
+for bin in "${REQUIRED_BINS[@]}"; do
+    if ! command -v "$bin" &> /dev/null; then
+        MISSING_BINS+=("$bin")
+    fi
+done
+
+if [ ${#MISSING_BINS[@]} -eq 0 ]; then
+    echo "✅ All required binaries found"
+else
+    echo "⚠️  Missing binaries: ${MISSING_BINS[*]}"
+    echo "Install them with: sudo pacman -S ${MISSING_BINS[*]}"
+fi
+
+# Check service status
+echo "🔍 Checking running services..."
+SERVICES=("hypridle" "waybar" "mako" "hyprpaper")
+for service in "${SERVICES[@]}"; do
+    if pgrep -x "$service" > /dev/null; then
+        echo "✅ $service is running"
+    else
+        echo "⚠️  $service is not running"
+    fi
+done
+
+echo ""
+echo "🎉 Configuration validation complete!"
+echo ""
+echo "Key mappings summary:"
+echo "===================="
+echo "SUPER + D           → Application launcher"
+echo "SUPER + Return      → Terminal (Kitty)"
+echo "SUPER + L           → Lock screen"
+echo "SUPER + H           → File search (fzf)"
+echo "SUPER_ALT + V       → Clipboard history"
+echo "SUPER + K           → Show keybindings"
+echo "SUPER_ALT + C       → Calculator"
+echo "SUPER_SHIFT + E     → Emoji picker"
+
+rm -f "$TEMP_FILE"

@@ -1,0 +1,11 @@
+usr/bin/env bash
+# ~/.config/hypr/scripts/fzf_files
+
+# Use fd to list all files under $HOME, then let fzf pick one
+selection=$(
+	fd --type f --hidden --exclude .cache --exclude .local/share/virtualenvs \
+		--color=never "" $HOME |
+		fzf --height=40% --reverse --border --preview 'bat --style=numbers --color=always {}'
+) || exit
+
+xdg-open "$selection"

@@ -1,0 +1,39 @@
+#!/bin/bash
+
+# Simple suspend script with reliable swaylock
+LOG_FILE="$HOME/.config/hypr/suspend.log"
+
+echo "$(date): Simple suspend triggered by hypridle" >> "$LOG_FILE"
+
+# Check if we're in a Hyprland session
+if [ -n "$HYPRLAND_INSTANCE_SIGNATURE" ]; then
+    echo "$(date): Hyprland session detected, signature: $HYPRLAND_INSTANCE_SIGNATURE" >> "$LOG_FILE"
+else
+    echo "$(date): WARNING: No Hyprland session signature found" >> "$LOG_FILE"
+fi
+
+# Check session state
+SESSION_STATE=$(loginctl show-session --property=State | cut -d= -f2)
+echo "$(date): Session state: $SESSION_STATE" >> "$LOG_FILE"
+
+# Pause music and mute audio
+echo "$(date): Pausing music and muting audio" >> "$LOG_FILE"
+mpc -q pause 2>/dev/null || true
+pulsemixer --mute 2>/dev/null || true
+
+# Kill any existing swaylock processes
+pkill swaylock 2>/dev/null || true
+sleep 1
+
+# Lock screen with simple, reliable swaylock command
+echo "$(date): Locking screen with simple swaylock" >> "$LOG_FILE"
+swaylock --color 000000 --show-failed-attempts --ignore-empty-password --daemonize
+
+# Wait a bit for lock to establish
+sleep 3
+
+# Then suspend
+echo "$(date): Attempting system suspend" >> "$LOG_FILE"
+systemctl suspend
+
+echo "$(date): Resume from suspend completed" >> "$LOG_FILE"

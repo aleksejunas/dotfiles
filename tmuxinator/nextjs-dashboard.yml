@@ -1,0 +1,22 @@
+enable_pane_titles: true
+
+name: nextjs-dashboard
+root: ~/Kode/NextJS/nextjs-dashboard/
+windows:
+  - ["DEV-SERVER"]:
+      root: ~/Kode/NextJS/nextjs-dashboard/
+      panes:
+        - pnpm run dev
+  - ["CODE"]:
+      root: ~/Kode/NextJS/nextjs-dashboard/
+      panes:
+        - nvim
+
+  - ["GIT"]:
+      root: ~/Kode/NextJS/nextjs-dashboard/
+      panes:
+        - zsh
+  - ["CODEX"]:
+      root: ~/Kode/NextJS/nextjs-dashboard/
+      panes:
+        - codex

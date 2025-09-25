@@ -1,0 +1,15 @@
+# ~/.config/tmuxinator/default.yml
+# ~/.config/tmuxinator/[project-name].yml
+
+name: btb
+root: ~/Kode/BackToBasicsLogic/
+
+windows:
+  - main:
+      layout: main-horizontal
+      panes:
+        - # Left Pane: Neovim
+          - nvim
+
+        - # Right Pane: Awaiting commands
+          - clear

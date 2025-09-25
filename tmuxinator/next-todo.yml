@@ -1,0 +1,18 @@
+enable_pane_titles: true
+
+name: phase-out-village
+root: ~/Kode/NextJS/next-js-todo-list/next-js-todo-list/
+windows:
+  - ["DEV-SERVER"]:
+      root: ~/Kode/NextJS/next-js-todo-list/next-js-todo-list/
+      panes:
+        - zsh
+  - ["CODE"]:
+      root: ~/Kode/NextJS/next-js-todo-list/next-js-todo-list/
+      panes:
+        - nvim
+
+  - ["GIT"]:
+      root: ~/Kode/NextJS/next-js-todo-list/next-js-todo-list/
+      panes:
+        - zsh

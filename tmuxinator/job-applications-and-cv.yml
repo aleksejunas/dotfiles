@@ -1,0 +1,25 @@
+enable_pane_titles: true
+
+name: job-applications-and-cv
+root: ~/CloudServices/JottaSync/Jobbsok/Applications/
+
+windows:
+  - ["APPLICATIONS"]:
+      root: ~/Obsidian/AreaFiftyOne_RS/AreFiftyOne_RS/JOBBHUB/
+      layout: main-horizontal
+      panes:
+        - # Left Pane: Neovim
+          - nvim
+  - ["CV"]:
+      root: ~/CloudServices/JottaSync/Jobbsok/Applications/
+      layout: main-horizontal
+      panes:
+        - nvim
+  - ["SUPER FILE MANAGER"]:
+      root: ~/CloudServices/JottaSync/Jobbsok/Applications/
+      panes:
+        - spf
+  - ["TERMINAL"]:
+      root: ~/CloudServices/JottaSync/Jobbsok/CV/markdown/
+      panes:
+        - zsh

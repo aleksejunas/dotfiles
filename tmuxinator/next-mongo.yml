@@ -1,0 +1,22 @@
+enable_pane_titles: true
+
+name: phase-out-village
+root: ~/Kode/NextJS/with-mongodb-app/
+windows:
+  - ["DEV-SERVER"]:
+      root: ~/Kode/NextJS/with-mongodb-app/
+      panes:
+        - pnpm run dev
+  - ["CODE"]:
+      root: ~/Kode/NextJS/with-mongodb-app/
+      panes:
+        - nvim
+
+  - ["GIT"]:
+      root: ~/Kode/NextJS/with-mongodb-app/
+      panes:
+        - zsh
+  - ["CODEX"]:
+      root: ~/Kode/NextJS/with-mongodb-app/
+      panes:
+        - codex

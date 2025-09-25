@@ -1,0 +1,8 @@
+name: back-to-basics
+root: ~/Kode/BackToBasicsLogic/
+
+windows:
+  - editor:
+      layout: main-horizontal
+      panes:
+        - nvim

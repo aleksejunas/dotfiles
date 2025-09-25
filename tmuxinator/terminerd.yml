@@ -17,3 +17,7 @@ windows:
       root: ~/Kode/Projects/TermiNerd/termi_nerd/
       panes:
         - zsh
+  - ["CODEX"]:
+      root: ~/Kode/Projects/TermiNerd/termi_nerd/
+      panes:
+        - zsh

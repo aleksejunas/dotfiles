@@ -1,0 +1,17 @@
+#!/bin/zsh
+
+# Get the current color-scheme setting
+current_scheme=$(gsettings get org.gnome.desktop.interface color-scheme)
+
+# Check the current scheme and toggle it
+if [[ "$current_scheme" == "'prefer-dark'" ]]; then
+    gsettings set org.gnome.desktop.interface color-scheme prefer-light
+    notify-send "Switched to Light Mode"
+else
+    gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+    notify-send "Switched to Dark Mode"
+fi
+
+
+
+ 

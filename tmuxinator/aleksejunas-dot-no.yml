@@ -1,0 +1,23 @@
+enable_pane_titles: true
+
+name: aleksejunas-dot-no
+root: ~/Kode/Projects/AleksejunasDotNo/aleksejunas-dot-no/
+
+windows:
+  - ["DEV-SERVER"]:
+      root: ~/Kode/Projects/AleksejunasDotNo/aleksejunas-dot-no/
+      panes:
+        - zsh
+  - ["CODE"]:
+      root: ~/Kode/Projects/AleksejunasDotNo/aleksejunas-dot-no/
+      panes:
+        - nvim
+
+  - ["GIT"]:
+      root: ~/Kode/Projects/AleksejunasDotNo/aleksejunas-dot-no/
+      panes:
+        - zsh
+  - ["CODEX"]:
+      root: ~/Kode/Projects/AleksejunasDotNo/aleksejunas-dot-no/
+      panes:
+        - codex

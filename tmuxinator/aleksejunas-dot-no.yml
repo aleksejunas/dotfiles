@@ -21,3 +21,7 @@ windows:
       root: ~/Kode/Projects/AleksejunasDotNo/aleksejunas-dot-no/
       panes:
         - codex
+  - ["GEMINI"]:
+      root: ~/Kode/Projects/AleksejunasDotNo/aleksejunas-dot-no/
+      panes:
+        - gemini

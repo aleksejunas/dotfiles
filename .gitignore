@@ -1,0 +1,5 @@
+## Ignore files for git
+
+.add # add files
+.spl # spell files
+.log # log files

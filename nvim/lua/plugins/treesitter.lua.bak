@@ -1,0 +1,13 @@
+return {
+  "nvim-treesitter/nvim-treesitter",
+  version = "v0.9.2",
+  opts = {
+    ensure_installed = { "norg", "norg_meta" },
+    highlight = {
+      enable = true,
+    },
+    indent = {
+      enable = true,
+    },
+  },
+}

@@ -9,9 +9,11 @@ vim.api.nvim_create_autocmd("BufNewFile", {
     local lines = vim.api.nvim_buf_get_lines(args.buf, 0, -1, false)
     if #lines == 1 and lines[1] == "" then
       local date = vim.fn.fnamemodify(args.file, ":t:r") -- YYYY-MM-DD
+      local updated_at = os.date("%Y-%m-%d %H:%M")
       local stub = {
         "---",
         "created: " .. date,
+        "updated: " .. updated_at,
         "type: daily",
         "---",
         "",

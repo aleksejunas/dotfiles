@@ -1,6 +1,7 @@
 
 ---
 created: {{date}}
+updated: {{date}} {{time}}
 type: daily
 ---
 

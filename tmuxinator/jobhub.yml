@@ -1,17 +1,27 @@
 enable_pane_titles: true
 
 name: jobhub
-root: ~/Obsidian/AreaFiftyOne_RS/AreFiftyOne_RS/JOBBHUB/
+root: ~/Obsidian/AreaFiftyOne_RS/AreaFiftyOne_RS/20-AREAS/JOBHUB/
 
 windows:
   - ["MAIN"]:
-      root: ~/Obsidian/AreaFiftyOne_RS/AreFiftyOne_RS/JOBBHUB/
+      root: ~/Obsidian/AreaFiftyOne_RS/AreaFiftyOne_RS/20-AREAS/JOBHUB/
       layout: main-horizontal
       panes:
         - # Left Pane: Neovim
           - nvim
-  - ["EMAIL-DRAFTS"]:
-      root: ~/Obsidian/AreaFiftyOne_RS/AreFiftyOne_RS/JOBBHUB/Drafts/
+  - ["CLI-AI-CLIENT"]:
+      root: ~/Obsidian/AreaFiftyOne_RS/AreaFiftyOne_RS/
       layout: main-horizontal
       panes:
-        - nvim
+        - zsh
+  - ["LAZYGIT"]:
+      root: ~/Obsidian/AreaFiftyOne_RS/AreaFiftyOne_RS/
+      layout: main-horizontal
+      panes:
+        - lazygit
+  - ["TERMINAL"]:
+      root: ~/Obsidian/AreaFiftyOne_RS/AreaFiftyOne_RS/
+      layout: main-horizontal
+      panes:
+        - zsh

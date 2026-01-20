@@ -33,7 +33,11 @@ nm-applet --indicator &
 exec mpd &
 
 # Set wallpaper (move this to the end)
-sleep 5 && hyprpaper &
+# sleep 5 && hyprpaper &
+swww.daemon &
+sleep 2
+swww img ~/.config/hypr/wallpapers/wallpaper.png &
+
 # echo "Executing wallpaper script with argument: ~/.config/hypr/wallpapers/wallpaper.png" >> /tmp/wallpaper.log
 # WALLPAPER="$HOME/.config/hypr/wallpapers/wallpaper.png"
 # ~/.config/hypr/scripts/wallpaper "$WALLPAPER" &

@@ -6,8 +6,8 @@ return {
   version = "*", -- recommended, use latest release instead of latest commit
   lazy = true,
   event = {
-    "BufReadPre " .. vim.fn.expand("~/Obsidian/AreaFiftyOne_RS/AreFiftyOne_RS") .. "/*.md",
-    "BufNewFile " .. vim.fn.expand("~/Obsidian/AreaFiftyOne_RS/AreFiftyOne_RS") .. "/*.md",
+    "BufReadPre " .. vim.fn.expand("~/Obsidian/AreaFiftyOne_RS/AreaFiftyOne_RS") .. "/*.md",
+    "BufNewFile " .. vim.fn.expand("~/Obsidian/AreaFiftyOne_RS/AreaFiftyOne_RS") .. "/*.md",
   },
   keys = {
     { "<leader>od", "<cmd>ObsidianToday<cr>", desc = "Obsidian: Dagens notat" },
@@ -25,7 +25,7 @@ return {
     workspaces = {
       {
         name = "personal",
-        path = "~/Obsidian/AreaFiftyOne_RS/AreFiftyOne_RS",
+        path = "~/Obsidian/AreaFiftyOne_RS/AreaFiftyOne_RS",
       },
       -- {
       --   name = "work",

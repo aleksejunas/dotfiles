@@ -1,0 +1,12 @@
+
+#!/usr/bin/zsh
+
+# launch ghostty with alt config
+
+if [ "$1" == "-f" ]; then
+  ghostty
+elif [ "$1" == "-F" ]; then
+  ghostty --fullscreen
+else
+  ghostty
+fi

@@ -4,16 +4,19 @@ name: SunCal (winter solstice calculator)
 root: ~/Kode/Projects/SunCalculator/React/winter-solstice-calculator/
 
 windows:
-  - [FRONTEND CODE]:
-      panes:
-        - nvim
-
   - [FRONTEND DEV SERVER]:
       root: ~/Kode/Projects/SunCalculator/React/winter-solstice-calculator/
       panes:
         - pnpm run dev
+  - [FRONTEND CODE]:
+      panes:
+        - nvim
 
   - [TERMINAL]:
+      root: ~/Kode/Projects/SunCalculator/React/winter-solstice-calculator/
+      panes:
+        - zsh
+  - [ASSISTANT]:
       root: ~/Kode/Projects/SunCalculator/React/winter-solstice-calculator/
       panes:
         - zsh

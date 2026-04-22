@@ -1,0 +1,37 @@
+# ~/.tmuxinator/hungry-birds.yml
+
+enable_pane_titles: true
+
+name: hungry-birds-site
+root: ~/Kode/Projects/Kunder/HungryBirds/hungry-birds-site/
+
+windows:
+  - ["ASTRO-DEV-SERVER"]:
+      root: ~/Kode/Projects/Kunder/HungryBirds/hungry-birds-site/astro-app/
+    panes:
+      - pnpm dev --host --port 4321
+
+  - ["SANITY-DEV-SERVER"]:
+      root: ~/Kode/Projects/Kunder/HungryBirds/hungry-birds-site/studio/
+    panes:
+      - pnpm dev
+
+  - ["CODE"]:
+      root: ~/Kode/Projects/Kunder/HungryBirds/hungry-birds-site/
+      panes:
+        - nvim
+
+  - ["CLAUDE"]:
+      root: ~/Kode/Projects/Kunder/HungryBirds/hungry-birds-site/
+      panes:
+        - claude
+
+  - ["TERMINAL"]:
+      root: ~/Kode/Projects/Kunder/HungryBirds/hungry-birds-site/
+      panes:
+        - gemini
+
+  - ["GIT"]:
+      root: ~/Kode/Projects/Kunder/HungryBirds/hungry-birds-site/
+      panes:
+        - zsh

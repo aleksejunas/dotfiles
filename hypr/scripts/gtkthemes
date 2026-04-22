@@ -8,6 +8,7 @@ THEME='Manhattan'
 ICONS='Luv-Folders-Dark'
 FONT='Noto Sans 9'
 CURSOR='Qogirr-Dark'
+CURSOR_SIZE='24'
 
 SCHEMA='gsettings set org.gnome.desktop.interface'
 
@@ -15,7 +16,24 @@ apply_themes () {
 	${SCHEMA} gtk-theme "$THEME"
 	${SCHEMA} icon-theme "$ICONS"
 	${SCHEMA} cursor-theme "$CURSOR"
+	${SCHEMA} cursor-size "$CURSOR_SIZE"
 	${SCHEMA} font-name "$FONT"
 }
 
+write_settings_ini () {
+	local file="$1"
+	mkdir -p "$(dirname "$file")"
+	cat > "$file" <<EOF
+[Settings]
+gtk-theme-name=$THEME
+gtk-icon-theme-name=$ICONS
+gtk-font-name=$FONT
+gtk-cursor-theme-name=$CURSOR
+gtk-cursor-theme-size=$CURSOR_SIZE
+gtk-application-prefer-dark-theme=1
+EOF
+}
+
 apply_themes
+write_settings_ini "$HOME/.config/gtk-3.0/settings.ini"
+write_settings_ini "$HOME/.config/gtk-4.0/settings.ini"

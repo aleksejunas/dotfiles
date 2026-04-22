@@ -13,6 +13,8 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   end
 end
 vim.opt.rtp:prepend(lazypath)
+vim.opt.termguicolors = true
+vim.cmd([[highlight Normal guibg=#1e222a guifg=#eaeaea]])
 
 require("lazy").setup({
   spec = {

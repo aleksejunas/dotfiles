@@ -1,0 +1,126 @@
+# Pakkeliste for Rolf sitt Hyprland-oppsett
+# Installer med: paru -S - < packages.txt
+# Linjer som starter med # ignoreres ikke av paru — bruk denne filen som referanse
+# og kjør: grep -v '^#' packages.txt | paru -S -
+
+# --- Compositor og Wayland-kjerne ---
+hyprland
+hyprpaper
+hypridle
+hyprlock
+hyprpm
+xdg-desktop-portal-hyprland
+xdg-desktop-portal-gtk
+polkit-gnome
+dbus
+
+# --- Statuslinje ---
+waybar
+
+# --- Notifikasjoner ---
+mako
+
+# --- Launcher ---
+rofi-wayland
+wofi
+
+# --- Terminal ---
+kitty
+ghostty
+foot
+
+# --- Skjermbilder ---
+grim
+slurp
+swappy
+
+# --- Utklippstavle ---
+wl-clipboard
+cliphist
+
+# --- Bakgrunnsbilde ---
+swww
+
+# --- Lås og logg ut ---
+swaylock
+wlogout
+
+# --- Lyd ---
+pipewire
+pipewire-pulse
+wireplumber
+pavucontrol
+playerctl
+pactl
+
+# --- Nettverk ---
+networkmanager
+network-manager-applet
+
+# --- Bluetooth ---
+bluez
+bluez-utils
+
+# --- Lysstyrke ---
+brightnessctl
+
+# --- GTK-theming ---
+nwg-look
+gsettings-desktop-schemas
+
+# --- Musikk ---
+mpd
+mpc
+mpv
+
+# --- KDE Connect ---
+kdeconnect
+
+# --- Systemd-integrasjon ---
+# (inkludert i base)
+
+# --- Shell ---
+zsh
+oh-my-zsh-git
+starship
+zsh-autosuggestions
+zsh-syntax-highlighting
+zoxide
+eza
+bat
+fzf
+
+# --- Editor ---
+neovim
+helix
+
+# --- Multiplexer ---
+tmux
+tmuxinator
+zellij
+
+# --- Filbehandling ---
+yazi
+lf
+
+# --- Git-verktøy ---
+git
+lazygit
+gitui
+
+# --- Fonter og ikoner ---
+noto-fonts
+noto-fonts-emoji
+ttf-iosevka-nerd
+papirus-icon-theme
+
+# --- Dev-verktøy ---
+base-devel
+rustup
+nodejs
+pnpm
+bun
+
+# --- Diverse CLI ---
+btop
+nm-connection-editor

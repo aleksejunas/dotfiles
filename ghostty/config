@@ -1,0 +1,22 @@
+# Ghostty configuration file
+# https://ghostty.app/docs/configuration
+
+keybind = shift+grave_accent=text:~
+keybind = grave_accent=text:`
+gtk-im-module = xim
+
+# Font
+font-family = JetBrains Mono
+font-size = 13
+
+# Window padding
+window-padding-x = 10
+window-padding-y = 8
+
+# Cursor
+cursor-style = block
+
+# QoL
+copy-on-select = true
+mouse-hide-while-typing = true
+keybind = shift+enter=text:\x1b[13;2u

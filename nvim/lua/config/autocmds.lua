@@ -16,3 +16,11 @@ vim.api.nvim_create_autocmd({ "FocusLost", "winLeave" }, {
     end
   end,
 })
+
+vim.api.nvim_create_autocmd("Filetype", {
+  pattern = { "markdown", "text" },
+  callback = function()
+    vim.opt_local.formatoptions:remove("r")
+    vim.opt_local.formatoptions:remove("o")
+  end,
+})

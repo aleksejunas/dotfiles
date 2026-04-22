@@ -1,0 +1,62 @@
+-- ~/.config/nvim/lua/plugins/lspconfig.lua
+-- LazyVim plugin-spec format for lspconfig with cmp and cmp_nvim_lsp support
+
+-- ~/.config/nvim/lua/plugins/lspconfig.lua
+return {
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      {
+        "hrsh7th/nvim-cmp",
+        config = function()
+          local cmp = require("cmp")
+          local mapping = require("cmp.config.mapping")
+          cmp.setup({
+            snippet = {
+              expand = function(args)
+                vim.fn["UltiSnips#Anon"](args.body)
+              end,
+            },
+            mapping = mapping({
+              ["<C-Space>"] = mapping.complete(),
+            }),
+            sources = {
+              { name = "nvim_lsp" },
+              { name = "buffer" },
+              { name = "path" },
+            },
+          })
+        end,
+      },
+      {
+        "hrsh7th/cmp-nvim-lsp",
+      },
+    },
+    opts = {
+      servers = {
+        cssls = {
+          settings = {
+            css = {
+              validate = true,
+              lint = {
+                unknownAtRules = "ignore",
+              },
+            },
+            scss = {
+              validate = true,
+              lint = {
+                unknownAtRules = "ignore",
+              },
+            },
+            less = {
+              validate = true,
+              lint = {
+                unknownAtRules = "ignore",
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+}

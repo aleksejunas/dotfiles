@@ -1,6 +1,3 @@
--- Plugin: folke/sidekick.nvim
--- Installed via store.nvim
-
 return {
     "folke/sidekick.nvim",
     opts = {
@@ -12,7 +9,6 @@ return {
             }
         }
     },
-    -- stylua: ignore
     keys = {
         {
             "<tab>",
@@ -22,7 +18,6 @@ return {
                     not require(
                         "sidekick"
                     ).nes_jump_or_apply(
-
                     )
                  then
                     return "<Tab>" -- fallback to normal tab
@@ -30,6 +25,21 @@ return {
             end,
             expr = true,
             desc = "Goto/Apply Next Edit Suggestion"
+        },
+        {
+            "<c-.>",
+            function()
+                require(
+                    "sidekick.cli"
+                ).focus()
+            end,
+            desc = "Sidekick Focus",
+            mode = {
+                "n",
+                "t",
+                "i",
+                "x"
+            }
         },
         {
             "<leader>aa",
@@ -52,6 +62,15 @@ return {
             desc = "Select CLI"
         },
         {
+            "<leader>ad",
+            function()
+                require(
+                    "sidekick.cli"
+                ).close()
+            end,
+            desc = "Detach a CLI Session"
+        },
+        {
             "<leader>at",
             function()
                 require(
@@ -64,6 +83,19 @@ return {
             end,
             mode = {"x", "n"},
             desc = "Send This"
+        },
+        {
+            "<leader>af",
+            function()
+                require(
+                    "sidekick.cli"
+                ).send(
+                    {
+                        msg = "{file}"
+                    }
+                )
+            end,
+            desc = "Send File"
         },
         {
             "<leader>av",
@@ -88,21 +120,6 @@ return {
             end,
             mode = {"n", "x"},
             desc = "Sidekick Select Prompt"
-        },
-        {
-            "<c-.>",
-            function()
-                require(
-                    "sidekick.cli"
-                ).focus()
-            end,
-            mode = {
-                "n",
-                "x",
-                "i",
-                "t"
-            },
-            desc = "Sidekick Switch Focus"
         },
         -- Example of a keybinding to open Claude directly
         {

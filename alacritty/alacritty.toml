@@ -5,7 +5,7 @@
 ## by Alacritty, including its shell. Some entries may override variables set by alacritty itself.
 [env]
 TERM = "alacritty"
-WINIT_X11_SCALE_FACTOR = "1.0"
+WINIT_X11_SCALE_FACTOR = "1.5"
 
 ## WINDOW ---------------------------------------------------------
 [window]
@@ -105,7 +105,7 @@ ipc_socket = true
 ## GENERAL --------------------------------------------------------
 
 ## Import additional configuration files.
-import = [
+general.import = [
   "~/.config/hypr/alacritty/colors.toml",
-  "~/.config/hypr/alacritty/fonts.toml",
+  "~/.config/hypr/alacritty/nts.toml",
 ]

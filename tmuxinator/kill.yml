@@ -1,0 +1,27 @@
+enable_pane_titles: true
+
+name: kill-your-darlings
+root: ~/Kode/Projects/Kunder/Renata/kill-your-darlings/
+
+windows:
+  - ["ASTRO-DEV-SERVER"]:
+      root: ~/Kode/Projects/Kunder/Renata/kill-your-darlings/astro-site/
+      panes:
+        - pnpm dev
+  - ["SANITY-DEV-SERVER"]:
+      root: ~/Kode/Projects/Kunder/Renata/kill-your-darlings/studio/
+      panes:
+        - pnpm dev
+
+  - ["CODE"]:
+      root: ~/Kode/Projects/Kunder/Renata/kill-your-darlings/
+    panes:
+      - zsh
+  - ["CLAUDE-CODE"]:
+      root: ~/Kode/Projects/Kunder/Renata/kill-your-darlings/
+    panes:
+      - claude
+  - ["TERMINAL"]:
+      root: ~/Kode/Projects/Kunder/Renata/kill-your-darlings/
+    panes:
+      - zsh

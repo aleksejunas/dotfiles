@@ -1,0 +1,47 @@
+[keymap]
+# NAVIGATION
+j = "cursor_down"
+k = "cursor_up"
+h = "cd_parent"
+l = "cd_descendants"
+
+gg = "cursor_move_top"
+G  = "cursor_move_bottom"
+
+ctrl-u = "cursor_page_up"
+ctrl-d = "cursor_page_down"
+
+# OPEN
+enter = "open"
+o = "open_with"
+i = "toggle_preview"
+
+# MARKING
+v = "toggle_select"
+V = "toggle_visual"
+ctrl-a = "select_all"
+ctrl-v = "invert_selection"
+
+# EDIT / FILE ACTIONS
+yy = "copy"
+xx = "cut"
+pp = "paste"
+dd = "delete"
+
+# SEARCH
+"/" = "search"
+n = "search_next"
+N = "search_prev"
+
+# PANELS
+tab = "tab_next"
+shift-tab = "tab_prev"
+
+ctrl-s = "split_horizontal"
+# ctrl-v = "split_vertical"
+q = "close"
+Q = "quit"
+
+# MISC
+# . = "toggle_hidden"
+r = "reload"

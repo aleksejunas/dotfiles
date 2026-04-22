@@ -1,0 +1,23 @@
+enable_pane_titles: true
+
+name: pipecat
+root: ~/Kode/Projects/PipeCat/pipecat/
+
+windows:
+  - ["GIT"]:
+      root: ~/Kode/Projects/PipeCat/pipecat/
+      panes:
+        - lazygit
+  - ["CODE"]:
+      root: ~/Kode/Projects/PipeCat/pipecat/
+      panes:
+        - source .venv/bin/activate && nvim .
+  - ["TERMINAL"]:
+      root: ~/Kode/Projects/PipeCat/pipecat/
+      panes:
+        - source .venv/bin/activate && zsh
+
+  - ["CLAUDE-CODE"]:
+      root: ~/Kode/Projects/PipeCat/pipecat/
+      panes:
+        - source .venv/bin/activate && claude .

@@ -1,22 +1,34 @@
 return {
-  "folke/tokyonight.nvim",
-  "catppuccin/nvim", -- Catppuccin theme
-  "EdenEast/nightfox.nvim", -- Nightfox theme
-  "navarasu/onedark.nvim", -- Onedark theme
-  "shaunsingh/nord.nvim", -- Nord theme
-  "morhetz/gruvbox", -- Gruvbox theme
-  "sainnhe/everforest", -- Everforest theme
-  "sainnhe/sonokai", -- Sonokai theme
-  "dracula/vim", -- dracula theme
-  "rose-pine/neovim", -- rose pine theme
-  "mofiqul/vscode.nvim", -- vscode theme
-  "projekt0n/github-nvim-theme", -- github theme
-  "olimorris/onedarkpro.nvim", -- onedarkpro theme
-  "rebelot/kanagawa.nvim", -- kanagawa theme
-  "glepnir/zephyr-nvim", -- zephyr theme
-  "marko-cerovac/material.nvim", -- material theme
-  priority = 1000,
-  config = function()
-    vim.cmd.colorscheme("nightfox")
-  end,
+  { "dracula/vim" },
+  { "folke/tokyonight.nvim" },
+  { "catppuccin/nvim" },
+  { "EdenEast/nightfox.nvim" },
+  { "navarasu/onedark.nvim" },
+  { "shaunsingh/nord.nvim" },
+  { "morhetz/gruvbox" },
+  { "sainnhe/everforest" },
+  { "sainnhe/sonokai" },
+  { "rose-pine/neovim" },
+  { "mofiqul/vscode.nvim" },
+  { "projekt0n/github-nvim-theme" },
+  { "olimorris/onedarkpro.nvim" },
+  { "rebelot/kanagawa.nvim" },
+  { "glepnir/zephyr-nvim" },
+  { "marko-cerovac/material.nvim" },
+  { "Mofiqul/adwaita.nvim" },
+  { "tibimunteanu/autumn" },
+  -- Nye
+  { "mellow-theme/mellow.nvim" },
+  { "junegunn/seoul256.vim" },
+  { "oonamo/ef-themes.nvim" },
+  { "rakr/vim-one" },
+  { "mhartington/oceanic-next" }, -- OceanicNext
+  { "sainnhe/gruvbox-material" },
+
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "gruvbox-material",
+    },
+  },
 }

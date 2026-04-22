@@ -1,0 +1,13 @@
+# .tmuxinator/itea.yml
+name: itea-shop-ssh
+root: ~/Kode/Projects/ITea/itea-shop-ssh/
+
+windows:
+  - "CODE":
+      layout: main-vertical 70/30
+      panes:
+        - nvim
+        - claude --resume
+  - "COMMAND":
+      panes:
+        - clear

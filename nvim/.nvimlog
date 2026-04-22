@@ -1,0 +1,2 @@
+WRN 2026-02-26T20:50:34.055 ?.328330   server_start:199: Failed to start server: operation not permitted: /run/user/1000/nvim.328330.0
+WRN 2026-02-26T20:50:34.080 ?.328330   ga_set_growsize:59: trying to set an invalid ga_growsize: 0

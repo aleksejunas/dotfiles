@@ -303,7 +303,7 @@
     "active-only": false,
     "format-icons": {
       "1": "",
-      "2": "",
+      "2": "󰝴",
       "3": "󰭹",
       "4": "",
       "5": "",
@@ -313,20 +313,19 @@
       "9": "",
       "10": "󰎇",
       "11": "",
-      "12": "",
+      "12": "",
       "urgent": "",
       "focused": "",
       "default": ""
     },
     "on-click": "activate"
   },
-  "hyprland/window": {
-	"format": "{}",
-	"rewrite": {
-		"(.*) - Mozilla Firefox": "🌎 $1",
-		"(.*) - zsh": "> [$1]"
-	}
-},
+"hyprland/window": {
+      "format": "{}",
+      "icon": true,
+      "icon-size": 18,
+      "separate-outputs": true
+    },
 
   // waybar-tray
   "tray": {

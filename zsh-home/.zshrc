@@ -84,6 +84,9 @@ export QT_IM_MODULE=ibus
 export PNPM_HOME="/home/rolf/.local/share/pnpm"
 path_add "$PNPM_HOME"
 
+export ANDROID_HOME="/opt/android-sdk/"
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools
+
 # NVM — lazy load for å unngå treig oppstart
 export NVM_DIR="$HOME/.nvm"
 nvm() {

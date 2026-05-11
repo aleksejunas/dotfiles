@@ -4,10 +4,14 @@ root: ~/Kode/Projects/ITea/itea-shop-ssh/
 
 windows:
   - "CODE":
-      layout: main-vertical 70/30
+      layout: main-horizontal 70/30
       panes:
         - nvim
         - claude --resume
+  - "SERVER":
+      panes: zsh
+  - "SHOP":
+      panes: zsh
   - "COMMAND":
       panes:
         - clear

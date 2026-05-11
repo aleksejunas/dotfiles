@@ -10,3 +10,4 @@ path_add "$HOME/.bun/bin"
 path_add "$HOME/Scripts"
 
 export PATH
+export QT_QPA_PLATFORMTHEME=qt5ct

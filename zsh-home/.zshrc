@@ -193,3 +193,4 @@ alias geary="geary-new"
 # ------------------------------
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
+export PATH="$(go env GOPATH)/bin:$PATH"

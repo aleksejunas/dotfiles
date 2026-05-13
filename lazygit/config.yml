@@ -1,9 +1,0 @@
-services:
-  "github.com": "github"
-
-customCommands:
-  - key: "C"
-    command: "gh pr create --fill --web"
-    context: "global"
-    loadingText: "Opening GitHub in browser..."
-    description: "Create Pull Reuqest"
